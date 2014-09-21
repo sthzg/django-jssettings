@@ -93,10 +93,21 @@ class JsSettings(object):
         """
         Registers an action to be executed on the ready event.
 
+        Example: Somewhere within a views.py:
+
+            jss = JsSettings(request)
+            jss.register_ready_action('alert("I am ready");')
+
+
+        And in a template file:
+
+            {% load jssettings %}
+            {% jss_ready_actions %}
+
         :param action: String of action to be performed on ready event.
         """
         self.js_ready_actions.append(action)
-                
+
     def dumps(self):
         """
         Returns ``request.js_settings`` as json'ified string.
