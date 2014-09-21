@@ -64,13 +64,13 @@ class JsSettings(object):
             jss.get_jssetting('foo')
             # hello world
 
-            jss.set_jssetting('one.two.three', 'checkpot')
+            jss.set_jssetting('one.two.three', 'bingo')
             jss.get_jssetting('one.two.three')
-            # checkpot
+            # bingo
 
-            jss.set_jssetting('one.two.three', 'checkpot')
+            jss.set_jssetting('one.two.three', 'bingo')
             jss.get_jssetting('one.two')
-            # {'three': 'checkpot'}
+            # {'three': 'bingo'}
 
         :param keys:
         :param value:
