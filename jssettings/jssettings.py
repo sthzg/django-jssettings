@@ -7,12 +7,19 @@ class JsSettings(object):
     """
     Provides API methods to get and set values on the ``js_settings`` object.
     """
+    # TODO(sthzg) Make it a singleton available through complete req/resp cycle.
     def __init__(self, request):
         try:
             self.js_settings = request.js_settings
         except AttributeError:
             self.js_settings = dict()
             request.__setattr__('js_settings', self.js_settings)
+
+        if not self.js_settings.get('ready_actions'):
+            self.js_settings['ready_actions'] = list()
+
+        self.js_ready_actions = self.js_settings.get('ready_actions')
+
 
     def get_jssetting(self, keys, lookup_dict=None):
         """
@@ -82,6 +89,14 @@ class JsSettings(object):
         else:
             lookup_dict[keys] = value
 
+    def register_ready_action(self, action):
+        """
+        Registers an action to be executed on the ready event.
+
+        :param action: String of action to be performed on ready event.
+        """
+        self.js_ready_actions.append(action)
+                
     def dumps(self):
         """
         Returns ``request.js_settings`` as json'ified string.
@@ -89,4 +104,3 @@ class JsSettings(object):
         :return: ``request.js_settings`` as JSON.
         """
         return json.dumps(self.js_settings)
-
