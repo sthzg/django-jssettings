@@ -4,9 +4,7 @@ import json
 
 
 class JsSettings(object):
-    """
-    Provides API methods to get and set values on the ``js_settings`` object.
-    """
+    """Provides methods to get and set values on the ``js_settings`` object."""
     # TODO(sthzg) Make it a singleton available through complete req/resp cycle.
     def __init__(self, request):
         try:
@@ -22,8 +20,7 @@ class JsSettings(object):
 
 
     def get_jssetting(self, keys, lookup_dict=None):
-        """
-        Returns the value for a setting or None.
+        """Returns the value for a setting or None.
 
         Ex:
 
@@ -53,8 +50,7 @@ class JsSettings(object):
             return None
 
     def set_jssetting(self, keys, value, lookup_dict=None):
-        """
-        Sets value in ``request.js_settings.``
+        """Sets value in ``request.js_settings.``
 
         Ex:
 
@@ -90,8 +86,7 @@ class JsSettings(object):
             lookup_dict[keys] = value
 
     def register_ready_action(self, action):
-        """
-        Registers an action to be executed on the ready event.
+        """Registers an action to be executed on the ready event.
 
         Example: Somewhere within a views.py:
 
@@ -109,8 +104,7 @@ class JsSettings(object):
         self.js_ready_actions.append(action)
 
     def dumps(self):
-        """
-        Returns ``request.js_settings`` as json'ified string.
+        """Returns ``request.js_settings`` as json'ified string.
 
         :return: ``request.js_settings`` as JSON.
         """
