@@ -24,10 +24,11 @@ def jss_ready_actions(request):
 
 READY_ACTIONS = '''
 <script type="text/javascript">
-jQuery(document).ready(function()
-{{
-    {0}
-}});
+(function ($) {{
+    $(document).ready(function() {{
+        {0}
+    }});
+}})(django.jQuery || Suit || jQuery);
 </script>
 '''
 
