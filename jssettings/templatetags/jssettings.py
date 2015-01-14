@@ -8,7 +8,7 @@ register = template.Library()
 
 @register.simple_tag
 def jss_settings(request):
-    if not request.get('js_settings'):
+    if not hasattr(request, 'js_settings'):
         return ''
 
     return json.dumps(request.js_settings)
