@@ -5,7 +5,7 @@ from jssettings.jssettings import JsSettings
 
 
 def javascript_base_settings(request):
-    """Provides basic settings to the javascript settings dictionary.
+    """ Provides basic settings to the javascript settings dictionary.
 
     Prepares a dictionary with all configuration values that were pushed
     to ``JsSettings`` during the request lifecycle. Additionally adds
